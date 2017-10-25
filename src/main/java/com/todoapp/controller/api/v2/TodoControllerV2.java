@@ -8,34 +8,34 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.todoapp.controller.api.TodoBaseController;
 import com.todoapp.model.Task;
 import com.todoapp.service.TodoService;
 
 import io.swagger.annotations.Api;
 
 @RestController
+@RequestMapping("/api/v2/")
 @Api(value="Todo App", produces="application/json", description="This is Tasks Api version 2.")
-public class TodoControllerV2 extends TodoBaseController {
+public class TodoControllerV2 {
 	
 	@Autowired
 	private TodoService todoService;
 	
-	@RequestMapping(value="/v2/tasks", method=RequestMethod.GET)
+	@RequestMapping(value="tasks", method=RequestMethod.GET)
 	public @ResponseBody List<Task> getTasksAction() {
 		return todoService.getTasks();
 	}
 	
-	@RequestMapping(value="/v2/tasks",method=RequestMethod.POST)
+	@RequestMapping(value="tasks",method=RequestMethod.POST)
 	public @ResponseBody List<Task> createTasksAction() {
 		return todoService.getTasks();
 	}
 	
-	@RequestMapping(value="/v2/tasks",method=RequestMethod.PUT)
+	@RequestMapping(value="tasks",method=RequestMethod.PUT)
 	public @ResponseBody List<Task> updateTasksAction() {
 		return todoService.getTasks();
 	}
-	@RequestMapping(value="/v2/tasks",method=RequestMethod.DELETE)
+	@RequestMapping(value="tasks",method=RequestMethod.DELETE)
 	public @ResponseBody List<Task> deleteTasksAction() {
 		return todoService.getTasks();
 	}
