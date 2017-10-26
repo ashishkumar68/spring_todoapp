@@ -1,0 +1,16 @@
+spring:
+     datasource:
+           url: jdbc:mysql://localhost:3306/todo_app
+           username: root
+           password: mindfire
+           driver-class-name: com.mysql.jdbc.Driver
+      
+     jpa:
+           hibernate:
+                 ddl-auto: update
+           properties:
+                 hibernate:
+                       show_sql: true
+                       use_sql_comments: true
+                       format_sql: true
+                       

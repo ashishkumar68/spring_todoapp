@@ -1,0 +1,8 @@
+api:
+     response:
+            error:
+                    invalid_auth_token: Api authentication token found invalid.
+                    auth_token_expiry: Authentication used has been Expired.
+                    
+            success:
+                    valid_request: Success
