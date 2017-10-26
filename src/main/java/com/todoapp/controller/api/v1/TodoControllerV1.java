@@ -22,7 +22,10 @@ public class TodoControllerV1 {
 	@Autowired
 	private TodoService todoService;
 	
-	@RequestMapping(value="tasks", method=RequestMethod.GET)
+	@RequestMapping(
+			value="tasks", 
+			produces= {"application/json"}, 
+			method=RequestMethod.GET)
 	public @ResponseBody List<Task> getTasksAction() {
 		return todoService.getTasks();
 	}
@@ -32,11 +35,11 @@ public class TodoControllerV1 {
 		return todoService.getTasks();
 	}
 	
-	@RequestMapping(value="/tasks",method=RequestMethod.PUT)
+	@RequestMapping(value="tasks",method=RequestMethod.PUT)
 	public @ResponseBody List<Task> updateTasksAction() {
 		return todoService.getTasks();
 	}
-	@RequestMapping(value="/tasks",method=RequestMethod.DELETE)
+	@RequestMapping(value="tasks",method=RequestMethod.DELETE)
 	public @ResponseBody List<Task> deleteTasksAction() {
 		return todoService.getTasks();
 	}
