@@ -15,22 +15,26 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="task")
+@Table(name = "task")
 public class Task {
-	
+
 	@Id
-	@Column(name="id")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@NotNull
-	@Column(name="description")
+	@Column(name = "serial_number")
+	private String serialNumber;
+
+	@NotNull
+	@Column(name = "description")
 	private String description;
-	
+
 	@NotNull
 	@JsonIgnore
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="user_id")
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	public Long getId() {
@@ -53,10 +57,17 @@ public class Task {
 		this.user = user;
 	}
 
+	public String getSerialNumber() {
+		return serialNumber;
+	}
+
+	public void setSerialNumber(String serialNumber) {
+		this.serialNumber = serialNumber;
+	}
+
 	@Override
 	public String toString() {
 		return "Task [id=" + id + ", description=" + description + "]";
 	}
-	
-	
+
 }

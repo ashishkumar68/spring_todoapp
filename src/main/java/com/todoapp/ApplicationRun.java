@@ -18,29 +18,29 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-public class ApplicationRun extends WebMvcConfigurerAdapter{
-	
+public class ApplicationRun extends WebMvcConfigurerAdapter {
+
 	public static void main(String[] args) {
 		SpringApplication.run(ApplicationRun.class, args);
 	}
-	
+
 	@Autowired
 	RequestInterceptor requestInterceptor;
-	
+
 	@Bean
 	public LocaleResolver localeResolver() {
-	    SessionLocaleResolver slr = new SessionLocaleResolver();
-	    slr.setDefaultLocale(Locale.US);
-	    return slr;
+		SessionLocaleResolver slr = new SessionLocaleResolver();
+		slr.setDefaultLocale(Locale.US);
+		return slr;
 	}
-	
+
 	@Bean
 	public LocaleChangeInterceptor localeChangeInterceptor() {
-	    LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
-	    lci.setParamName("lang");
-	    return lci;
+		LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+		lci.setParamName("lang");
+		return lci;
 	}
-	
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(requestInterceptor);

@@ -2,13 +2,16 @@ package com.todoapp.controller.api.v1;
 
 import java.util.List;
 
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.todo.requestformat.api.v1.TodoGetRequest;
 import com.todoapp.model.Task;
 import com.todoapp.service.TodoService;
 
@@ -26,14 +29,14 @@ public class TodoControllerV1 {
 			value="tasks", 
 			produces= {"application/json"}, 
 			method=RequestMethod.GET)
-	public @ResponseBody List<Task> getTasksAction() {
-		return todoService.getTasks();
+	public @ResponseBody TodoGetRequest getTasksAction(@Valid @RequestBody TodoGetRequest todoGetRequest) {
+		return todoGetRequest;
 	}
 	
-	@RequestMapping(value="tasks",method=RequestMethod.POST)
+	/*@RequestMapping(value="tasks",method=RequestMethod.POST)
 	public @ResponseBody List<Task> createTasksAction() {
 		return todoService.getTasks();
-	}
+	}*/
 	
 	@RequestMapping(value="tasks",method=RequestMethod.PUT)
 	public @ResponseBody List<Task> updateTasksAction() {
