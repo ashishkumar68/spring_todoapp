@@ -21,12 +21,8 @@ public class RequestInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 			System.out.println("In Request Interceptor preHandle.");
+			
 			authService.authenticateApiRequest(request);
-			if (request.getMethod().equalsIgnoreCase("GET")) {
-				// For fetching string after data.
-			    //System.out.println(URLDecoder.decode(request.getQueryString().substring("data".length() + 1), "UTF-8"));
-				//System.exit(0);
-			}
 			return true;
 	}
 
