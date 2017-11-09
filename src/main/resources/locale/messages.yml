@@ -3,6 +3,6 @@ api:
             error:
                     invalid_auth_token: Api authentication token found invalid.
                     auth_token_expiry: Authentication used has been Expired.
-                    
+                    invalid_serial: Serial Number was found invalid.
             success:
                     valid_request: Success

@@ -1,4 +1,4 @@
-package com.todoapp;
+package com.todoapp.exceptionhandler;
 
 public class TODOException {
 
