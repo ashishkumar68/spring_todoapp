@@ -2,9 +2,12 @@ package com.todoapp.responseformat.api.v1;
 
 import java.util.List;
 
-public class TodoGetResponse {
+import org.springframework.stereotype.Component;
+
+@Component
+public class TodoCRUDResponse {
 	
-	class Task {
+	public static class Task {
 		private String serialNumber;
 		private String description;
 

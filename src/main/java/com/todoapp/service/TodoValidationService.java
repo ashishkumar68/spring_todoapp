@@ -1,14 +1,10 @@
 package com.todoapp.service;
 
-import org.springframework.stereotype.Service;
+import com.todoapp.requestformat.api.v1.TodoGetRequest;
+import com.todoapp.responseformat.api.v1.TodoValidationResponse;
 
-@Service
-public class TodoValidationService {
+public interface TodoValidationService {
+
+	public TodoValidationResponse validateTodoGetRequest(TodoGetRequest request);
 	
-	/**
-	 *  Function to validate the TodoGetRequest Request object.
-	 * 
-	 * @param TodoGetRequest request
-	 */
-	 
 }

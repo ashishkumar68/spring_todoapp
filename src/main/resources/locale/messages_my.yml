@@ -1,9 +1,0 @@
-api:
-     response:
-            error:
-                    invalid_auth_token: api စစ်မှန်ကြောင်းအထောက်အထားပြသခြင်းတိုကင်ကိုမမှန်ကန်တဲ့တွေ့ရှိခဲ့ပါတယ်။
-                    auth_token_expiry: 
-အသုံးပြုသော authentication Expired ခဲ့တာဖြစ်ပါတယ်။
-                    
-            success:
-                    valid_request: အောင်မြင်ခြင်း

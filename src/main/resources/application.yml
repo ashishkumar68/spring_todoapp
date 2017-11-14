@@ -1,4 +1,9 @@
 spring:
+     messages:
+         basename: locale/messages
+         cache-seconds: 60
+         encoding: UTF-8
+          
      datasource:
            url: jdbc:mysql://localhost:3306/todo_app
            username: root
