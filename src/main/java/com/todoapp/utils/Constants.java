@@ -55,5 +55,7 @@ public class Constants {
 		todoErrorMap.put("INVALIDPAGE", new TodoError("1004", "api.response.error.invalid_page"));
 		todoErrorMap.put("INVALIDLIMIT", new TodoError("1005", "api.response.error.invalid_limit"));
 		todoErrorMap.put("INCOMPLETEREQ", new TodoError("1006", "api.response.error.incomplete_request"));
+		todoErrorMap.put("INVALIDDESC", new TodoError("1007", "api.response.error.desc_length_exceed"));
+		todoErrorMap.put("INTERNALERR", new TodoError("1008", "api.response.error.internal_error"));
 	}
 }

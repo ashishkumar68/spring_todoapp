@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.DataBinder;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -14,6 +15,7 @@ import com.todoapp.repository.TaskRepository;
 import com.todoapp.utils.Constants;
 import com.todoapp.utils.Constants.TodoError;
 
+@Transactional
 @Component
 public class TodoGetRequest implements Validator {
 
@@ -66,8 +68,8 @@ public class TodoGetRequest implements Validator {
 			
 			if (
 						null == task.getSerialNumber() || task.getSerialNumber().equals("") 
-					||	task.getSerialNumber().length() < 1 
-					||  null == taskRepository.findBySerialNumber(task.getSerialNumber())
+					||	task.getSerialNumber().length() < 1 || task.getSerialNumber().length() > 200 
+					||	null == taskRepository.findBySerialNumber(task.getSerialNumber())
 			) {
 				todoError = (TodoError) Constants.todoErrorMap.get("INVALIDSERIAL");
 				errors.reject(todoError.getErrorCode(), todoError.getErrorText());
@@ -170,7 +172,7 @@ public class TodoGetRequest implements Validator {
 	@Override
 	public void validate(Object object, Errors errors) {
 		TodoGetRequest request = (TodoGetRequest) object;
-
+		DataBinder binder = null; 
 		if ((null == request.getTaskList() && null == request.getTasks())
 				|| (null != request.getTaskList() && null != request.getTasks())) {
 			TodoError todoError = (TodoError) Constants.todoErrorMap.get("INVALIDREQCONTENT");
@@ -180,7 +182,7 @@ public class TodoGetRequest implements Validator {
 
 		if (null != request.getTasks()) {
 			for (Task task : request.getTasks()) {
-				DataBinder binder = new DataBinder(task);
+				binder = new DataBinder(task);
 				binder.addValidators(task);
 				binder.validate();
 				if (binder.getBindingResult().hasErrors()) {
@@ -192,7 +194,7 @@ public class TodoGetRequest implements Validator {
 		}
 
 		if (null != request.getTaskList()) {
-			DataBinder binder = new DataBinder(request.getTaskList());
+			binder = new DataBinder(request.getTaskList());
 			binder.addValidators(request.getTaskList());
 			binder.validate();
 			if (binder.getBindingResult().hasErrors()) {

@@ -24,11 +24,11 @@ public class Task {
 	private Long id;
 
 	@NotNull
-	@Column(name = "serial_number")
+	@Column(name = "serial_number", unique = true, length = 20)
 	private String serialNumber;
 
 	@NotNull
-	@Column(name = "description")
+	@Column(name = "description", length = 200)
 	private String description;
 
 	@NotNull

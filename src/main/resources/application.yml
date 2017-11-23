@@ -24,3 +24,8 @@ spring:
            add-mappings: false
 logging:
      file: todoapp.log
+
+     level:
+          org:
+                springframework:
+                          web: ERROR
